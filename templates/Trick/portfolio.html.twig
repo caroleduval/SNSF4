@@ -8,25 +8,18 @@
                 {% else %}
                     <a href="{{ path('trick_view', {'slug': trick.slug} ) }}"><img src="{{ asset('images/picto.png') }}"  alt="Pas encore de photo" title="Pas encore de photo" /></a>
                 {% endif %}
-                {#{% if not trick.photos.isEmpty() %}#}
-                    {#{% set thumb = trick.getThumbnail() %}#}
-                    {#<a href=""><img src="{{ asset(thumb.webPath) }}"  alt="thumb.alt" /></a>#}
-                {#{% else %}#}
-                    {#<a href=""><img src="{{ asset('images/picto.png') }}"  alt="Pas encore de photo" title="Pas encore de photo" /></a>#}
-                {#{% endif %}#}
             </div>
             <div class="row label-text">
                 <div class="col-xs-6 col-xs-offset-3">
                     <a href="{{ path('trick_view', {'slug': trick.slug} ) }}"><p class="text-title">{{ trick.name }}</p></a>
-                    {#<a href=""><p class="text-title">{{ trick.name }}</p></a>#}
                 </div>
                 {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
                     <div class="col-xs-3">
                         <ul class="f_nav">
                             <li><a><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
                             {#<li><a href="{{ path('trick_edit', {'slug': trick.slug} ) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>#}
-                            {#<li><a href="{{ path('trick_delete', {'slug': trick.slug} ) }}" onclick="return confirm('Êtes-vous sur(e) de vouloir supprimer ce trick ?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></li>#}
-                            <li><a href="" onclick="return confirm('Êtes-vous sur(e) de vouloir supprimer ce trick ?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></li>
+                            <li><a href="{{ path('trick_delete', {'slug': trick.slug} ) }}" onclick="return confirm('Êtes-vous sur(e) de vouloir supprimer ce trick ?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></li>
+                            {#<li><a href="" onclick="return confirm('Êtes-vous sur(e) de vouloir supprimer ce trick ?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></li>#}
                         </ul>
                     </div>
                 {#{% endif %}#}

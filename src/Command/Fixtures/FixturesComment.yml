@@ -17,7 +17,7 @@ Comment:
     comment4 :
         author: bdu@gmail.com
         dateCrea : "2017-12-07 10:15:29"
-        content: +1
+        content: \+1
         trick: Mute
     comment5 :
         author: cecile@hotmail.com
@@ -62,7 +62,7 @@ Comment:
     comment13 :
         author: cecile@hotmail.com
         dateCrea : "2017-12-08 10:59:29"
-        content: suffit de s'entariner un peu
+        content: suffit de s'entrainer un peu
         trick: Mute
     comment14 :
         author: karole.duval@caramail.com
