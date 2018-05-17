@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form _self %}
+{% block _app_trick_photos_entry_row %}
+    <div class="form-group">
+        <div class="col-xs-12">
+            {{ form_errors(form) }}
+        </div>
+        <div class="col-xs-10">
+            {% if form.vars.value is not null %}
+                <img src="{{ asset(form.vars.value.webPath) }}" class="img-responsive">
+                <p class="help-block">Cliquer sur Parcourir pour changer la photo</p>
+            {% endif %}
+        </div>
+        <div class="col-xs-12 col-sm-7" style="vertical-align: bottom">
+            {{ form_widget(form) }}
+        </div>
+    </div>
+{% endblock %}
+{% block _app_trick_videos_entry_row %}
+    <div class="form-group">
+        <div class="col-xs-12">
+            {{ form_errors(form) }}
+        </div>
+        <div class="col-xs-10">
+            {% if form.vars.value is not null %}
+                <img src="{{ asset(form.vars.value.image) }}" class="img-responsive">
+                <p class="help-block">Entrer une nouvelle url pour changer la video</p>
+            {% endif %}
+            {{ form_widget(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="well">
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'form-horizontal'}}) }}
+                {{ form_errors(form) }}
+                <fieldset>
+                    {% if trick is defined %}
+                        <legend>Modifier la figure</legend>
+                    {% else %}
+                        <legend>Nouvelle figure</legend>
+                    {% endif %}
+
+                    {# name #}
+                    <div class="form-group">
+                        {{ form_label(form.name, 'Nom', {'label_attr': {'class': 'col-md-3 control-label'}}) }}
+                        <div class="col-md-9">
+                            {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
+                        </div>
+                        <div class="col-md-9 col-md-offset-3">
+                            {{ form_errors(form.name) }}
+                        </div>
+                    </div>
+
+                    {# description #}
+                    <div class="form-group">
+                        {{ form_label(form.description, 'Description', {'label_attr': {'class': 'col-md-3 control-label'}}) }}
+                        <div class="col-md-9">
+                            {{ form_widget(form.description, {'attr': {'class': 'form-control', 'rows': '5', 'placeholder': 'Description'}}) }}
+                        </div>
+                        <div class="col-md-9 col-md-offset-3">
+                            {{ form_errors(form.description) }}
+                        </div>
+                    </div>
+
+                    {# category #}
+                    <div class="form-group">
+                        {{ form_label(form.category, 'Catégorie', {'label_attr': {'class': 'col-md-3 control-label'}}) }}
+                        <div class="col-md-9">
+                            {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="col-md-9 col-md-offset-3">
+                            {{ form_errors(form.category) }}
+                        </div>
+                    </div>
+
+                    {# Photos #}
+                    <div class="form-group">
+                        {{ form_label(form.photos, 'Photos', {'label_attr': { 'class': 'col-md-3 control-label'}})}}
+                        <div class="col-md-9">
+                            {{ form_widget(form.photos) }}
+                        </div>
+                        <div class="col-md-9 col-md-offset-3">
+                            <a href="#" id="add_photo" class="btn btn-default decale">Ajouter une photo</a>
+                        </div>
+                    </div>
+
+                    {# Videos #}
+                    <div class="form-group">
+                        {{ form_label(form.videos, 'Vidéos', {'label_attr': {'class': 'col-md-3 control-label'}}) }}
+                        <div class="col-md-9">
+                            {{ form_widget(form.videos) }}
+                        </div>
+                        <div class="col-md-9 col-md-offset-3">
+                            <a href="#" id="add_video" class="btn btn-default decale">Ajouter une video</a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="text-center">
+                            {% if trick is defined %}
+                                <a href="{{ path('trick_view', {'slug': trick.slug} ) }}" class="btn btn-default">Annuler</a>
+                            {% endif %}
+                            <button class="btn btn-primary" type="submit">Enregistrer</button>
+                        </div>
+                    </div>
+                </fieldset>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

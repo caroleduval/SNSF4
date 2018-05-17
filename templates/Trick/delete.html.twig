@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="well">
+            {{ form_start(form)}}
+            <fieldset>
+                <legend>Supprimer un trick</legend>
+                <p>Etes-vous certain de vouloir supprimer le trick "{{ trick.name }}" ?</p>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-danger" value="Supprimer">
+                        <a href="{{ path('trick_view', {'slug': trick.slug} ) }}" class="btn btn-default">Annuler</a>
+                    </div>
+                </div>
+            </fieldset>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

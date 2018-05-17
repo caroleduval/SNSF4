@@ -1,0 +1,24 @@
+{{ form_start(form, { action : path('comments_add', {'slug': comment.trick.slug}) }) }}
+<div class="row comment">
+    <div class="avatar col-xs-2 col-sm-1">
+        {% if app.user.photo is not null %}
+            <img src="{{ asset(app.user.photo.webPath) }}" alt="{{ app.user.firstName }}" />
+        {% else %}
+            <img src="{{ asset('images/picto.png') }}"  alt="Photo" title="Pas encore de photo" />
+        {% endif %}
+    </div>
+    <div class="comm col-xs-10">
+        <div class="form-group">
+            {{ form_widget(form.content, { 'attr': { 'class': 'form-control', 'placeholder':'Laisse ton commentaire' } }) }}
+            {% if form_errors(form.content) %}
+                <label class="error" for="content">{{ form_errors(form.content) }}</label>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <button type="submit" class="btn btn-primary">
+        <span>Envoyer</span>
+    </button>
+</div>
+{{ form_end(form) }}

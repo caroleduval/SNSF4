@@ -1,0 +1,81 @@
+Photo :
+    photo1:
+        trick : Mute
+        type: jpg
+        alt: grab_mute_1
+        name: 1
+    photo2:
+        trick : Mute
+        type: jpg
+        alt: grab_mute_2
+        name: 2
+    photo3:
+        trick : Sad
+        type: jpg
+        alt: grab_sad_1
+        name: 3
+    photo4:
+        trick : Sad
+        type: jpg
+        alt: grab_sad_2
+        name: 4
+    photo5:
+        trick : Indy
+        type: jpg
+        alt: grab_indy_1
+        name: 5
+    photo6:
+        trick : Indy
+        type: jpg
+        alt: grab_indy_2
+        name: 6
+    photo7:
+        trick : 180
+        type: jpg
+        alt: Cab_180_Piste_Cudlip_REP
+        name: 7
+    photo8:
+        trick : 180
+        type: jpg
+        alt: grab_stalefish_1
+        name: 8
+    photo9:
+        trick : Stalefish
+        type: jpg
+        alt: grab_stalefish_2
+        name: 9
+    photo10:
+        trick : 360
+        type: jpg
+        alt: rotation_360
+        name: 10
+    photo11:
+        trick : Front Flip
+        type: jpg
+        alt: front_flip
+        name: 11
+    photo12:
+        trick : Nose Slide
+        type: jpg
+        alt: KBS_niseko-cayley
+        name: 12
+    photo13:
+        trick : Seat belt
+        type: jpg
+        alt: grab_seatbelt_1
+        name: 13
+    photo14:
+        trick : Seat belt
+        type: jpg
+        alt: grab_seatbelt_2
+        name: 14
+    photo15:
+        trick :
+        type: png
+        alt: carole
+        name: 15
+    photo16:
+        trick :
+        type: jpg
+        alt: bertrand
+        name: 16

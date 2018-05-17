@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="content">
+        <h2>Bienvenue sur SnowTricks, le site des amateurs de snowboard, par les amateurs de snowboard.</h2>
+        <p>Vous voulez des informations sur les tricks, ces figures acrobatiques réalisées par les freestylers du snowboard ?
+            La liste ci-dessous est pour vous ! Chaque trick a sa page avec les informations et les photos et videos qui vous permettront de mieux le maitriser.</p>
+        {#{% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+            {#<a href="{{ path('fos_user_registration_register') }}" title="S'enregistrer"><h3>Inscrivez-vous !</h3></a>#}
+            <a href="" title="S'enregistrer"><h3>Inscrivez-vous !</h3></a>
+        <div class="row">
+            <div class="col-xs-12 col-md-9">
+                <p>Vous vous y connaissez en trick et vous voulez ajouter des tricks et/ou les compléter ?</p>
+                <p>Vous voulez échanger avec d'autres amateurs de snowboard ?</p>
+                <p>En vous inscrivant, vous entrez dans la communauté SnowTricks et vous pouvez devenir contributeur du site.</p>
+            </div>
+            <div class="col-xs-12 col-md-3">
+                {#<a class="btn btn-primary btn-lg" href="{{ path('fos_user_registration_register') }}">Je m'inscris maintenant</a>#}
+                <a class="btn btn-primary btn-lg" href="">Je m'inscris maintenant</a>
+            </div>
+        </div>
+        {#{% endif %}#}
+    </div>
+
+    <div class="row">
+        {{ include("Trick/portfolio.html.twig") }}
+    </div>
+    <div class="row">
+        {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+            <p class=" pull-right">
+                {#<a class="btn btn-primary btn-lg" href="{{ path('trick_add') }}">J'ajoute un trick</a>#}
+                <a class="btn btn-primary btn-lg" href="">J'ajoute un trick</a>
+            </p>
+        {#{% endif %}#}
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center message">
+            <p>Vous connecter est obligatoire pour pouvoir contribuer à ce site.</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
+            <div class="well">
+                <legend>Se connecter</legend>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    {% if csrf_token %}
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    {% endif %}
+
+                    {#First Name#}
+                    <div class="form-group">
+                        <label for="username">{{ 'Email'|trans }}</label>
+                        <input class="form-control" type="text" id="username" name="_username" required="required" />
+                    </div>
+                    {#Password#}
+                    <div class="form-group">
+                        <label for="password">{{ 'security.login.password'|trans }}</label>
+                        <input class="form-control" type="password" id="password" name="_password" required="required" />
+                    </div>
+                    {#Remember Me#}
+                    <div class="form-group text-center">
+                        <input type="checkbox" id="remember_me" name="_remember_me" checked />
+                        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                    </div>
+                    {#Validation#}
+                    <div class="form-group text-center">
+                        <input class="btn btn-primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                    </div>
+                    {#Mot de passe oublié#}
+                    <div class="text-center" style="margin-bottom: 10px">
+                        <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
+                    </div>
+                    {#S'inscrire#}
+                    <div class="text-center">
+                        <a href="{{ path('fos_user_registration_register') }}">Je m'inscris maintenant</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

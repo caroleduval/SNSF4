@@ -1,0 +1,33 @@
+Video:
+    video1:
+        trick: Mute
+        type: youtube
+        identif: 4sha5smEUHA
+    video2:
+        trick: Sad
+        type: youtube
+        identif: KEdFwJ4SWq4
+    video3:
+        trick: Indy
+        type: dailymotion
+        identif: x11jh6u
+    video4:
+        trick: Indy
+        type: dailymotion
+        identif: x11jh6u_snowboard-indy-grab_sport
+    video5:
+        trick: 180
+        type: vimeo
+        identif: 7678393
+    video6:
+        trick: 360
+        type: youtube
+        identif: JJy39dO_PPE
+    video7:
+        trick: Front Flip
+        type: youtube
+        identif: xhvqu2XBvI0
+    video8:
+        trick: Nose Slide
+        type: youtube
+        identif: czpV-FOBHY4

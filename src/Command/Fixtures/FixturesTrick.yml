@@ -1,0 +1,63 @@
+Trick:
+    Mute :
+        name: Mute
+        description: Saisie de la carre frontside de la planche entre les deux pieds avec la main avant.
+        category: Grab
+        creation: "2018-01-17 11:17:23"
+    Sad:
+        name: Sad
+        description: Saisie de la carre backside de la planche, entre les deux pieds, avec la main avant.
+        category: Grab
+        creation: "2018-01-27 11:17:23"
+    Indy:
+        name: Indy
+        description: Saisie de la carre frontside de la planche, entre les deux pieds, avec la main arrière.
+        category: Grab
+        creation: "2018-02-17 11:17:23"
+    180:
+        name: 180
+        description: Demi-tour, soit 180 degrés d'angle.
+        category: Rotation
+        creation: "2018-02-27 11:17:23"
+    Stalefish:
+        name: Stalefish
+        description: Saisie de la carre backside de la planche entre les deux pieds avec la main arrière.
+        category: Grab
+        creation: "2018-03-17 11:17:23"
+    360:
+        name: 360
+        description: Trois six pour un tour complet.
+        category: Rotation
+        creation: "2018-03-27 11:17:23"
+    Front Flip:
+        name: Front Flip
+        description: Rotation verticale vers l'avant.
+        category: Flip
+        creation: "2018-04-17 11:17:23"
+    Nose Slide:
+        name: Nose Slide
+        description: Glissade sur l'avant de la planche sur une barre de slide.
+        category: Slide
+        creation: "2018-04-28 11:17:23"
+    Seat belt:
+        name: Seat belt
+        description: Saisie du carre frontside à l'arrière avec la main avant.
+        category: Grab
+        creation: "2018-04-27 11:17:23"
+    1080:
+        name: 1080
+        description: Trois tours complet. on l'appelle également "big foot".
+        category: Grab
+        creation: "2018-04-29 11:17:23"
+    
+    
+    
+
+
+
+
+
+
+
+ 
+

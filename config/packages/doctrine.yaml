@@ -12,8 +12,7 @@ doctrine:
         server_version: '5.7'
         charset: utf8mb4
         default_table_options:
-            charset: utf8mb4
-            collate: utf8mb4_unicode_ci
+            charset: utf8
 
         url: '%env(resolve:DATABASE_URL)%'
     orm:
@@ -24,6 +23,6 @@ doctrine:
             App:
                 is_bundle: false
                 type: annotation
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
+                dir: '%kernel.project_dir%/src/Domain/Model'
+                prefix: 'App\Domain\Model'
                 alias: App
