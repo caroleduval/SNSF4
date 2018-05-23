@@ -16,8 +16,8 @@
                 {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
                     <div class="col-xs-3">
                         <ul class="f_nav">
-                            <li><a><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
-                            {#<li><a href="{{ path('trick_edit', {'slug': trick.slug} ) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>#}
+                            {#<li><a><i class="fa fa-pencil" aria-hidden="true"></i></a></li>#}
+                            <li><a href="{{ path('trick_edit', {'slug': trick.slug} ) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
                             <li><a href="{{ path('trick_delete', {'slug': trick.slug} ) }}" onclick="return confirm('Êtes-vous sur(e) de vouloir supprimer ce trick ?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></li>
                             {#<li><a href="" onclick="return confirm('Êtes-vous sur(e) de vouloir supprimer ce trick ?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a></li>#}
                         </ul>

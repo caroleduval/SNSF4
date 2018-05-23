@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Responder;
+namespace App\UI\Responder;
 
 use Twig\Environment;
 use Symfony\Component\HttpFoundation\Response;

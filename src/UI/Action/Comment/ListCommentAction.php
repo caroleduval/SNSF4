@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Action\Comment;
+namespace App\UI\Action\Comment;
 
-use App\Responder\ListCommentResponder;
+use App\UI\Responder\ListCommentResponder;
 use App\Domain\Repository\TrickManager;
 use App\Domain\Repository\CommentManager;
 use Symfony\Component\HttpFoundation\Response;

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Action\Trick;
+namespace App\UI\Action\Trick;
 
-use App\Responder\HomeResponder;
+use App\UI\Responder\HomeResponder;
 use App\Domain\Repository\TrickManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

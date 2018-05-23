@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Form\FormInterface;
 
-final class AddTrickResponder
+final class EditTrickResponder
 {
     /**
      * @var Environment

@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Action\Trick;
+namespace App\UI\Action\Trick;
 
 use App\Domain\Repository\TrickManager;
-use App\Responder\DeleteTrickResponder;
+use App\Service\FileUploader;
+use App\UI\Responder\DeleteTrickResponder;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * @Route("/supprimer_un_trick/{slug}", name="trick_delete", methods={"GET","POST"})
@@ -26,16 +27,24 @@ final class DeleteTrickAction
     private $manager;
 
     /**
+     * @var FileUploader
+     */
+    private $uploader;
+
+    /**
      * DeleteTrickAction constructor.
      * @param SessionInterface $session
      * @param TrickManager $manager
+     * @param FileUploader $uploader
      */
     public function __construct(
         SessionInterface $session,
-        TrickManager $manager)
+        TrickManager $manager,
+        FileUploader $uploader)
     {
         $this->session =$session;
         $this->manager =$manager;
+        $this->uploader=$uploader;
     }
 
     /**
@@ -49,6 +58,7 @@ final class DeleteTrickAction
     {
         $trick=$this->manager
             ->findTrickbySlug($request->attributes->get('slug'));
+
 
         $this->manager->deleteTrick($trick);
 

@@ -1,7 +1,7 @@
 parameters:
     locale: 'fr'
     fixtures_directory: '%kernel.project_dir%/src/Command/Fixtures'
-    photos_directory: '%kernel.project_dir%/src/Command/Fixtures'
+    photos_directory: '%kernel.project_dir%/public/upload/photos'
 
 services:
     # default configuration for services in *this* file
@@ -20,8 +20,8 @@ services:
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
-    App\Action\:
-        resource: '../src/Action'
+    App\UI\Action\:
+        resource: '../src/UI/Action'
         tags: ['controller.service_arguments']
 
     App\Command\:
@@ -33,6 +33,34 @@ services:
         resource: '../src/Domain/Repository'
         tags: ['doctrine.repository_service']
 
+    App\Service\:
+        resource: '../src/Service'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    # Ajout d'une vidéo
+    App\DoctrineListener\VideoCreationListener:
+        arguments:
+            - '@App\Service\IframeBuilder'
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+
+
+    # Ajout d'une photo
+    App\Service\FileUploader:
+        arguments:
+            $photosDir: '%photos_directory%'
+
+    App\DoctrineListener\PhotoUploadListener:
+        arguments:
+            - '@App\Service\FileUploader'
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: postPersist }
+            - { name: doctrine.event_listener, event: postUpdate }
+            - { name: doctrine.event_listener, event: preRemove }
+            - { name: doctrine.event_listener, event: postRemove }
+
+    # Mise à jour des médias
+    App\Service\CollectionUpdater:
+        arguments:
+            - '@doctrine.orm.entity_manager'

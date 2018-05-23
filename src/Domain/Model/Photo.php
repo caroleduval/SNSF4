@@ -11,6 +11,7 @@ use Ramsey\Uuid\UuidInterface;
 /**
  * @ORM\Table(name="photo")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Photo
 {

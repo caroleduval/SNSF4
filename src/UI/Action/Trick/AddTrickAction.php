@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Actions\Trick;
+namespace App\UI\Action\Trick;
 
-use App\Domain\DTO\NewTrickDTO;
 use App\Domain\Model\Trick;
 use App\Domain\Repository\TrickManager;
-use App\Form\Type\TrickType;
-use App\Form\Handler\AddTrickHandler;
-use App\Responder\AddTrickResponder;
+use App\UI\Form\Type\TrickType;
+use App\UI\Form\Handler\AddTrickHandler;
+use App\UI\Responder\AddTrickResponder;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,6 +45,7 @@ final class AddTrickAction
      * @param FormFactoryInterface $formFactory
      * @param AddTrickHandler $handler
      * @param SessionInterface $session
+     * @param TrickManager $manager
      */
     public function __construct(
         FormFactoryInterface $formFactory,
@@ -71,10 +71,10 @@ final class AddTrickAction
         Request $request,
         AddTrickResponder $responder): Response
     {
-        $dto = new NewTrickDTO();
+        $trick = new Trick();
 
         $form = $this->formFactory
-            ->create(TrickType::class, $dto)
+            ->create(TrickType::class, $trick)
             ->handleRequest($request);
 
         if ($this->handler->handle($form)){

@@ -3,7 +3,7 @@
 namespace App\Domain\Repository;
 
 use App\Domain\Model\Trick;
-//use App\Event\ChangeTrickEvent;
+use App\Service\FileUploader;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
@@ -12,27 +12,30 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class TrickManager extends ServiceEntityRepository
 {
-    private $dispatcher;
-
     /**
      * @var EntityManagerInterface
      */
     private $em;
 
     /**
+     * @var FileUploader
+     */
+    private $uploader;
+
+    /**
      * TrickManager constructor.
      * @param EntityManagerInterface $em
-     * @param EventDispatcherInterface $dispatcher
      * @param ManagerRegistry $registry
+     * @param FileUploader $uploader
      */
     public function __construct(
         EntityManagerInterface $em,
-        EventDispatcherInterface $dispatcher,
-        ManagerRegistry $registry)
+        ManagerRegistry $registry,
+        FileUploader $uploader)
     {
         parent::__construct($registry, Trick::class);
         $this->em = $em;
-        $this->dispatcher = $dispatcher;
+        $this->uploader=$uploader;
     }
 
     /**
@@ -74,10 +77,6 @@ class TrickManager extends ServiceEntityRepository
         $trick->setLastUpdate(new \DateTime());
         $this->em->persist($trick);
         $this->em->flush();
-//        $this->dispatcher->dispatch(
-//            'on.trick.registration',
-//            new ChangeTrickEvent($trick)
-//        );
     }
 
     /**
@@ -85,14 +84,12 @@ class TrickManager extends ServiceEntityRepository
      */
     public function deleteTrick(Trick $trick)
     {
-        // avt remove
         $this->em->remove($trick);
         $this->em->flush();
-        // ap remove
     }
 
     /**
-     *
+     * @param Trick $trick
      */
     public function editTrick(Trick $trick)
     {

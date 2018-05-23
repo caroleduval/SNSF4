@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Action\Trick;
+namespace App\UI\Action\Trick;
 
 use App\Domain\Repository\TrickManager;
 use App\Service\BiblioMessager;
-use App\Responder\ViewTrickResponder;
+use App\UI\Responder\ViewTrickResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
