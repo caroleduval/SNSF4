@@ -6,7 +6,7 @@ use App\Domain\Model\Trick;
 use App\Domain\Repository\TrickManager;
 use App\UI\Form\Type\TrickType;
 use App\UI\Form\Handler\AddTrickHandler;
-use App\UI\Responder\AddTrickResponder;
+use App\UI\Responder\Trick\AddTrickResponder;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

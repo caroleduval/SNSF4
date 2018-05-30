@@ -1,11 +1,11 @@
 <?php
 
-namespace App\UI\Responder;
+namespace App\UI\Responder\Trick;
 
 use Twig\Environment;
 use Symfony\Component\HttpFoundation\Response;
 
-final class ViewTrickResponder
+final class HomeResponder
 {
     /**
      * @var Environment
@@ -13,7 +13,7 @@ final class ViewTrickResponder
     private $twig;
 
     /**
-     * ViewTrickResponder constructor.
+     * HomeResponder constructor.
      * @param Environment $twig
      */
     public function __construct(Environment $twig)
@@ -28,8 +28,10 @@ final class ViewTrickResponder
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function __invoke(array $data)
+    public function __invoke(array $data=null)
     {
-        return new Response($this->twig->render('Trick/view.html.twig',$data));
+        return new Response(
+            $this->twig->render('Trick/index.html.twig', $data)
+        );
     }
 }

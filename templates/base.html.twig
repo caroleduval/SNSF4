@@ -1,98 +1,114 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% block title %}SnowTricks{% endblock %}</title>
-    <script src="https://use.fontawesome.com/e0a1d229f0.js"></script>
-    <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+        <title>{% block title %}SnowTricks{% endblock %}</title>
+        <script src="https://use.fontawesome.com/e0a1d229f0.js"></script>
+        <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=2" />
-</head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=2" />
+    </head>
 
 
-<!-- start header -->
-<body>
-<div class="container-fluid">
-    <div class="header_bg">
-        <div class="header">
-            <div class="row">
-                <div class="pull-right col-xs-6 col-sm-3 col-md-3 col-lg-2">
-                    <ul class="menu">
-                        <li><a href="{{ path('homepage') }}"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a></li>
-                        {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
-                        {#<li><a href="{{ path('fos_user_profile_show') }}" title="Mon Profil">#}
-                        {#<i class="fa fa-user-circle fa-2x"aria-hidden="true"></i></a></li>#}
-                        {#<li><a href="{{ path('fos_user_security_logout') }}" title="Se déconnecter">#}
-                        {#<i class="fa fa-user-times fa-2x" aria-hidden="true"></i></a></li>#}
-                        {#{% else %}#}
-                        {#<li><a href="{{ path('fos_user_security_login') }}" title="Me connecter">#}
-                        {#<i class="fa fa-user-circle fa-2x" aria-hidden="true"></i></a></li>#}
-                        {#<li><a href="{{ path('fos_user_registration_register') }}" title="M'inscrire">#}
-                        {#<i class="fa fa-user-plus fa-2x" aria-hidden="true"></i></a></li>#}
-                        {#{% endif %}#}
-                    </ul>
+    <!-- start header -->
+    <body>
+        <div class="container-fluid">
+            <div class="header_bg">
+                <div class="header">
+                    <div class="row">
+                        <div class="pull-right col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                            <ul class="menu">
+                                <li>
+                                    <a href="{{ path('homepage') }}">
+                                        <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <li>
+                                        <a href="{{ path('view_profile') }}" title="Mon Profil">
+                                            <i class="fa fa-user-circle fa-2x"aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('logout') }}" title="Se déconnecter">
+                                            <i class="fa fa-user-times fa-2x" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a href="{{ path('Login') }}" title="Me connecter">
+                                            <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('user_registration') }}" title="M'inscrire">
+                                            <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="pull-right text-center welcome h4 col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+                            {#Hello {{ app.user.firstName|upper }}#}
+                            {#{% endif %}#}
+                        </div>
+                    </div>
+                    <div class="clear"></div>
                 </div>
-                <div class="clear"></div>
-                <div class="pull-right text-center welcome h4 col-xs-6 col-sm-3 col-md-3 col-lg-2">
-                    {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
-                    {#Hello {{ app.user.firstName|upper }}#}
-                    {#{% endif %}#}
+                <div class="header_btm">
+                    <div class="h_left">
+                        <h2>Bienvenue sur SnowTricks.</h2>
+                        <h3 class="hidden-xs">Site communautaire des amateurs de snowboard.</h3>
+                    </div>
+                    <div class="clear"></div>
                 </div>
             </div>
-            <div class="clear"></div>
-        </div>
-        <div class="header_btm">
-            <div class="h_left">
-                <h2>Bienvenue sur SnowTricks.</h2>
-                <h3 class="hidden-xs">Site communautaire des amateurs de snowboard.</h3>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
 
-    <div class="main_bg">
-        {% for flash_message in app.session.flashBag.get("info") %}
-            <div class="main">
-                <div class="alert alert-success">
-                    {{ flash_message }}
-                </div>
+            <div class="main_bg">
+                {% for flash_message in app.session.flashBag.get("info") %}
+                    <div class="main">
+                        <div class="alert alert-success">
+                            {{ flash_message }}
+                        </div>
+                    </div>
+                {% endfor %}
+                {% block body %}
+                    <div title="container">
+                        {# contenu des pages #}
+                    </div>
+                {% endblock %}
             </div>
-        {% endfor %}
-        {% block body %}
-            <div title="container">
-                {# contenu des pages #}
-            </div>
-        {% endblock %}
-    </div>
 
-    <div class="footer_bg low">
-        <div class="footer">
-            <div class="row">
-                <div class="last col-xs-12 col-md-6">
-                    <h4>A propos de ce site</h4>
-                    <p>Ce site a été réalisé dans le cadre d'une formation.<br> L'ensemble de son contenu est fictif.</p>
-                </div>
-                <div class="last col-xs-12 col-md-6">
-                    <h4>A propos de moi</h4>
-                    <span>Retrouvez moi sur les réseaux sociaux :</span>
-                    <div class="f_icons">
-                        <ul>
-                            <li><a href="https://github.com/caroleduval"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></li>
-                            <li><a href="https://openclassrooms.facebook.com/profile.php?id=100016853288099"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a></li>
-                            <li><a href="https://linkedin.com/in/carole-duvall"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a></li>
-                        </ul>
+            <div class="footer_bg low">
+                <div class="footer">
+                    <div class="row">
+                        <div class="last col-xs-12 col-md-6">
+                            <h4>A propos de ce site</h4>
+                            <p>Ce site a été réalisé dans le cadre d'une formation.<br> L'ensemble de son contenu est fictif.</p>
+                        </div>
+                        <div class="last col-xs-12 col-md-6">
+                            <h4>A propos de moi</h4>
+                            <span>Retrouvez moi sur les réseaux sociaux :</span>
+                            <div class="f_icons">
+                                <ul>
+                                    <li><a href="https://github.com/caroleduval"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></li>
+                                    <li><a href="https://openclassrooms.facebook.com/profile.php?id=100016853288099"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a></li>
+                                    <li><a href="https://linkedin.com/in/carole-duvall"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
                     </div>
                 </div>
-                <div class="clear"></div>
             </div>
         </div>
-    </div>
-</div>
-</body>
+    </body>
 </html>

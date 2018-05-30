@@ -267,29 +267,6 @@ class User implements UserInterface
         $this->roles = $roles;
     }
 
-//    /**
-//     * Retourne les rôles de l'user
-//     *
-//     * @return array
-//     */
-//    public function getRoles():array
-//    {
-//        $roles = $this->roles;
-//
-//        return array_unique($roles);
-//    }
-//
-//    /**
-//     * set roles
-//     *
-//     * @param array $roles
-//     */
-//    public function setRoles(array $roles)
-//    {
-//        $this->roles = [];
-//        $this->roles = $roles;
-//    }
-
     /**
      * Non utilisée : mot de passe non stocké en clair
      */
@@ -304,20 +281,4 @@ class User implements UserInterface
     {
         return null;
     }
-
-//    /**
-//     * {@inheritdoc}
-//     */
-//    public function serialize(): string
-//    {
-//        return serialize([$this->id, $this->username, $this->password]);
-//    }
-//
-//    /**
-//     * {@inheritdoc}
-//     */
-//    public function unserialize($serialized): void
-//    {
-//        [$this->id, $this->username, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
-//    }
 }

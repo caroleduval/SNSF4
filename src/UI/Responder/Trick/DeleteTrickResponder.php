@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UI\Responder;
+namespace App\UI\Responder\Trick;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;

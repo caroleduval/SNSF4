@@ -27,4 +27,13 @@ class UserManager extends ServiceEntityRepository
         parent::__construct($registry, User::class);
         $this->em = $em;
     }
+
+    /**
+     * @param User $user
+     */
+    public function addUser(User $user)
+    {
+        $this->em->persist($user);
+        $this->em->flush();
+    }
 }

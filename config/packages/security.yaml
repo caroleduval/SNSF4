@@ -6,7 +6,7 @@ security:
     providers:
         doctrine:
             entity:
-                class: app\Domain\Model\User
+                class: App\Domain\Model\User
                 property: username
 
     role_hierarchy:
@@ -20,10 +20,11 @@ security:
             anonymous: true
             pattern: ^/
             form_login:
-                login_path: login
+                login_path: Login
                 check_path: login_check
                 always_use_default_target_path:  true
                 default_target_path:  /
+                csrf_token_generator: security.csrf.token_manager
             logout: true
             remember_me:
                 secret:     '%kernel.secret%' # %secret% est un paramètre de parameter

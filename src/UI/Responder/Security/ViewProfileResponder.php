@@ -1,11 +1,11 @@
 <?php
 
-namespace App\UI\Responder;
+namespace App\UI\Responder\Security;
 
 use Twig\Environment;
 use Symfony\Component\HttpFoundation\Response;
 
-final class ListCommentResponder
+final class ViewProfileResponder
 {
     /**
      * @var Environment
@@ -28,8 +28,8 @@ final class ListCommentResponder
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function __invoke(array $data)
+    public function __invoke()
     {
-        return new Response($this->twig->render('Comment/list.html.twig',$data));
+        return new Response($this->twig->render('Security/view.html.twig'));
     }
 }

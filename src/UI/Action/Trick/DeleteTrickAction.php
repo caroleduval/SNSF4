@@ -4,7 +4,7 @@ namespace App\UI\Action\Trick;
 
 use App\Domain\Repository\TrickManager;
 use App\Service\FileUploader;
-use App\UI\Responder\DeleteTrickResponder;
+use App\UI\Responder\Trick\DeleteTrickResponder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

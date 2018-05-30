@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d4bd6c257380dbfe18ec9438d6c177f4",
+    "content-hash": "54be95742bdd723230bbc80e31c91e98",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -2893,16 +2893,16 @@
         },
         {
             "name": "symfony/form",
-            "version": "v4.0.9",
+            "version": "v4.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/form.git",
-                "reference": "1ddddddaf43a812aee6fb5795dc8b3ee3117c0a1"
+                "reference": "0838207670dcf3f18289b636d3f07b660e9f98d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/form/zipball/1ddddddaf43a812aee6fb5795dc8b3ee3117c0a1",
-                "reference": "1ddddddaf43a812aee6fb5795dc8b3ee3117c0a1",
+                "url": "https://api.github.com/repos/symfony/form/zipball/0838207670dcf3f18289b636d3f07b660e9f98d5",
+                "reference": "0838207670dcf3f18289b636d3f07b660e9f98d5",
                 "shasum": ""
             },
             "require": {
@@ -2910,6 +2910,7 @@
                 "symfony/event-dispatcher": "~3.4|~4.0",
                 "symfony/intl": "~3.4|~4.0",
                 "symfony/options-resolver": "~3.4|~4.0",
+                "symfony/polyfill-ctype": "~1.8",
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/property-access": "~3.4|~4.0"
             },
@@ -2969,7 +2970,7 @@
             ],
             "description": "Symfony Form Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-20T10:04:09+00:00"
+            "time": "2018-05-22T13:00:37+00:00"
         },
         {
             "name": "symfony/framework-bundle",
@@ -3661,6 +3662,61 @@
             "time": "2017-12-12T01:47:50+00:00"
         },
         {
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                },
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "time": "2018-04-30T19:57:29+00:00"
+        },
+        {
             "name": "symfony/polyfill-intl-icu",
             "version": "v1.8.0",
             "source": {
@@ -4049,24 +4105,26 @@
         },
         {
             "name": "symfony/security",
-            "version": "v4.0.9",
+            "version": "v3.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security.git",
-                "reference": "3ba77b4b63fa51f048ebbf8291079a13e31eb6a6"
+                "reference": "b4f0319d6b9c424dd6ac1e15f3cd32708b57aa0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security/zipball/3ba77b4b63fa51f048ebbf8291079a13e31eb6a6",
-                "reference": "3ba77b4b63fa51f048ebbf8291079a13e31eb6a6",
+                "url": "https://api.github.com/repos/symfony/security/zipball/b4f0319d6b9c424dd6ac1e15f3cd32708b57aa0a",
+                "reference": "b4f0319d6b9c424dd6ac1e15f3cd32708b57aa0a",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3",
-                "symfony/event-dispatcher": "~3.4|~4.0",
-                "symfony/http-foundation": "~3.4|~4.0",
-                "symfony/http-kernel": "~3.4|~4.0",
-                "symfony/property-access": "~3.4|~4.0"
+                "php": "^5.5.9|>=7.0.8",
+                "symfony/event-dispatcher": "~2.8|~3.0|~4.0",
+                "symfony/http-foundation": "^2.8.31|~3.3.13|~3.4|~4.0",
+                "symfony/http-kernel": "~3.3|~4.0",
+                "symfony/polyfill-php56": "~1.0",
+                "symfony/polyfill-php70": "~1.0",
+                "symfony/property-access": "~2.8|~3.0|~4.0"
             },
             "replace": {
                 "symfony/security-core": "self.version",
@@ -4077,12 +4135,12 @@
             "require-dev": {
                 "psr/container": "^1.0",
                 "psr/log": "~1.0",
-                "symfony/expression-language": "~3.4|~4.0",
-                "symfony/finder": "~3.4|~4.0",
-                "symfony/ldap": "~3.4|~4.0",
+                "symfony/expression-language": "~2.8|~3.0|~4.0",
+                "symfony/finder": "~2.8|~3.0|~4.0",
+                "symfony/ldap": "~3.1|~4.0",
                 "symfony/polyfill-intl-icu": "~1.0",
-                "symfony/routing": "~3.4|~4.0",
-                "symfony/validator": "~3.4|~4.0"
+                "symfony/routing": "~2.8|~3.0|~4.0",
+                "symfony/validator": "^3.2.5|~4.0"
             },
             "suggest": {
                 "psr/container-implementation": "To instantiate the Security class",
@@ -4095,7 +4153,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.0-dev"
+                    "dev-master": "3.4-dev"
                 }
             },
             "autoload": {
@@ -4122,7 +4180,7 @@
             ],
             "description": "Symfony Security Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-30T01:23:47+00:00"
+            "time": "2018-05-25T11:50:55+00:00"
         },
         {
             "name": "symfony/security-bundle",
@@ -4203,6 +4261,65 @@
             "description": "Symfony SecurityBundle",
             "homepage": "https://symfony.com",
             "time": "2018-04-06T07:35:43+00:00"
+        },
+        {
+            "name": "symfony/security-csrf",
+            "version": "v4.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/security-csrf.git",
+                "reference": "b9f6b7978b0937a704678d17c273eb26d5d96c31"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/security-csrf/zipball/b9f6b7978b0937a704678d17c273eb26d5d96c31",
+                "reference": "b9f6b7978b0937a704678d17c273eb26d5d96c31",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3",
+                "symfony/security-core": "~3.4|~4.0"
+            },
+            "conflict": {
+                "symfony/http-foundation": "<3.4"
+            },
+            "require-dev": {
+                "symfony/http-foundation": "~3.4|~4.0"
+            },
+            "suggest": {
+                "symfony/http-foundation": "For using the class SessionTokenStorage."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Security\\Csrf\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Security Component - CSRF Library",
+            "homepage": "https://symfony.com",
+            "time": "2018-05-24T13:19:09+00:00"
         },
         {
             "name": "symfony/serializer",

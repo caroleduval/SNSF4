@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UI\Responder;
+namespace App\UI\Responder\Trick;
 
 use App\Domain\Model\Trick;
 use Twig\Environment;

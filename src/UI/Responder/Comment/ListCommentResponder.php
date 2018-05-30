@@ -1,11 +1,11 @@
 <?php
 
-namespace App\UI\Responder;
+namespace App\UI\Responder\Comment;
 
 use Twig\Environment;
 use Symfony\Component\HttpFoundation\Response;
 
-final class HomeResponder
+final class ListCommentResponder
 {
     /**
      * @var Environment
@@ -13,7 +13,7 @@ final class HomeResponder
     private $twig;
 
     /**
-     * HomeResponder constructor.
+     * ViewTrickResponder constructor.
      * @param Environment $twig
      */
     public function __construct(Environment $twig)
@@ -28,10 +28,8 @@ final class HomeResponder
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function __invoke(array $data=null)
+    public function __invoke(array $data)
     {
-        return new Response(
-            $this->twig->render('Trick/index.html.twig', $data)
-        );
+        return new Response($this->twig->render('Comment/list.html.twig',$data));
     }
 }

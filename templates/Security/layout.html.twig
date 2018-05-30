@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for key, messages in app.session.flashbag.all() %}
+        {% for message in messages %}
+            <div class="alert alert-{{ key }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <div class="row fosuser">
+        {% block user_content %}
+
+        {% endblock user_content %}
+    </div>
+{% endblock %}

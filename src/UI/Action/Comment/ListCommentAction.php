@@ -2,7 +2,7 @@
 
 namespace App\UI\Action\Comment;
 
-use App\UI\Responder\ListCommentResponder;
+use App\UI\Responder\Comment\ListCommentResponder;
 use App\Domain\Repository\TrickManager;
 use App\Domain\Repository\CommentManager;
 use Symfony\Component\HttpFoundation\Response;

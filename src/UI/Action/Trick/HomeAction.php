@@ -2,7 +2,7 @@
 
 namespace App\UI\Action\Trick;
 
-use App\UI\Responder\HomeResponder;
+use App\UI\Responder\Trick\HomeResponder;
 use App\Domain\Repository\TrickManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

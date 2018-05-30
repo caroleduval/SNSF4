@@ -63,7 +63,10 @@ class TrickType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Trick::class
+            'data_class' => Trick::class,
+            'csrf_protection' => true,
+            'csrf_field_name' => '_token',
+            'csrf_token_id'   => 'trick_item'
                 ]);
     }
 
