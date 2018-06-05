@@ -7,26 +7,26 @@
                 <legend>Mon profil</legend>
                 <div class="form-group">
                     <label>Prénom :</label>
-                    <div class="champ">{{ app.user.firstName|capitalize }}</div>
+                    <div class="champ">{{ user.firstName|capitalize }}</div>
                 </div>
                 <div class="form-group">
                     <label>Nom :</label>
-                    <div class="champ">{{ app.user.name|capitalize }}</div>
+                    <div class="champ">{{ user.name|capitalize }}</div>
                 </div>
                 <div class="form-group">
                     <label>Email :</label>
-                    <div class="champ">{{ app.user.email }}</div>
+                    <div class="champ">{{ user.email }}</div>
                 </div>
                 <div class="form-group">
                     <label>Photo :</label>
-                    {% if app.user.photo is not null %}
-                        <div class="champbis"><img src="{{ asset(app.user.photo.webPath) }}" alt="{{ app.user.name }}" width="60px"></div>
+                    {% if user.photo is not null %}
+                        <div class="champbis"><img src="{{ asset(user.photo.webPath) }}" alt="{{ user.name }}" width="60px"></div>
                     {% else %}
                         <div class="champ">Pas de photo de profil</div>
                     {% endif %}
                 </div>
                 <div class="form-group text-center">
-                    <a class="btn btn-primary btn-lg" href="">Modifier</a>
+                    <a class="btn btn-primary btn-lg" href="{{ path('edit_profile', {'username': user.username} ) }}">Modifier</a>
                 </div>
             </div>
         </div>

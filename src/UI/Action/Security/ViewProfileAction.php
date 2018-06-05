@@ -6,12 +6,23 @@ use App\UI\Responder\Security\ViewProfileResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 /**
  * @Route("/profile", name="view_profile", methods={"GET"})
  */
 class ViewProfileAction
 {
+    /**
+     * @var TokenStorageInterface
+     */
+    private $tokenStorage;
+
+    public function __construct(TokenStorageInterface $tokenStorage)
+    {
+        $this->tokenStorage = $tokenStorage;
+    }
+
     /**
      * @param Request $request
      * @param ViewProfileResponder $responder
@@ -24,6 +35,10 @@ class ViewProfileAction
         Request $request,
         ViewProfileResponder $responder): Response
     {
-        return $responder();
+        $user=$this->tokenStorage->getToken()->getUser();
+
+        return $responder([
+            'user' => $user
+        ]);
     }
 }

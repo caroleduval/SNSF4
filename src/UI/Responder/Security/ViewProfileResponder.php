@@ -28,8 +28,8 @@ final class ViewProfileResponder
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function __invoke()
+    public function __invoke($data=null)
     {
-        return new Response($this->twig->render('Security/view.html.twig'));
+        return new Response($this->twig->render('Security/view.html.twig', $data));
     }
 }

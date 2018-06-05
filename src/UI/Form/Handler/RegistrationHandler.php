@@ -65,7 +65,7 @@ class RegistrationHandler
 
             $this->userManager->addUser($user);
 
-            $token = new UsernamePasswordToken($user->getUsername(), null, 'main', $user->getRoles());
+            $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
             $this->tokenStorage->setToken($token);
             $this->session->set('_security_main', serialize($token));
             return true;

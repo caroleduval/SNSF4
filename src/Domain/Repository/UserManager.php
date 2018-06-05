@@ -29,11 +29,29 @@ class UserManager extends ServiceEntityRepository
     }
 
     /**
+     * @param $username
+     * @return User
+     */
+    public function findUserbyUsername($username) : User
+    {
+        return $this->em->getRepository(User::class)->findOneByUsername($username);
+    }
+
+    /**
      * @param User $user
      */
     public function addUser(User $user)
     {
         $this->em->persist($user);
+        $this->em->flush();
+    }
+
+
+    /**
+     *
+     */
+    public function editUser()
+    {
         $this->em->flush();
     }
 }

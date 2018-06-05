@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @UniqueEntity(fields={"username"}, message="Cet username est déjà utilisé.")
  * @UniqueEntity(fields={"email"}, message="Cet email est déjà utilisé.")
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
     /**
      * @var UuidInterface
@@ -280,5 +280,29 @@ class User implements UserInterface
     public function getSalt()
     {
         return null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function serialize(): string
+    {
+        return serialize([
+            $this->id,
+            $this->username,
+            $this->password
+            ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize($serialized): void
+    {
+        [
+            $this->id,
+            $this->username,
+            $this->password
+        ] = unserialize($serialized);
     }
 }

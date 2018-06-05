@@ -42,7 +42,13 @@ class EditTrickHandler
         $this->uploader=$uploader;
     }
 
-    public function handle(FormInterface $form, Trick $trick, $listPhotos, $listVideos): bool
+    /**
+     * @param FormInterface $form
+     * @param $listPhotos
+     * @param $listVideos
+     * @return bool
+     */
+    public function handle(FormInterface $form, $listPhotos, $listVideos): bool
     {
         if ($form->isSubmitted() && $form->isValid()){
             $trick=$form->getData();

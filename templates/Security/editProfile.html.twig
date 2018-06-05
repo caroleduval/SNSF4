@@ -1,0 +1,45 @@
+{% extends "Security/layout.html.twig" %}
+
+{% block user_content %}
+    <div class="container">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
+            <div class="well">
+                <legend>Modifier mon profil</legend>
+                {{ form_start(form) }}
+                <fieldset>
+                    {#First Name#}
+                    <div class="form-group">
+                        {{ form_label(form.firstName, 'Prénom :', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'placeholder': 'Prénom'}})}}
+                        {{ form_errors(form.firstName) }}
+                    </div>
+                    {#Name#}
+                    <div class="form-group">
+                        {{ form_label(form.name, 'Nom :', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}})}}
+                        {{ form_errors(form.name) }}
+                    </div>
+                    {# Email #}
+                    <div class="form-group">
+                        {{ form_label(form.email, 'E-mail :', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Adresse e-mail'}})}}
+                        {{ form_errors(form.email) }}
+                    </div>
+                    {#Photo#}
+                    <div class="form-group phavatar">
+                        {{ form_label(form.photo, 'Photo :', {'label_attr': {'class': 'control-label'}}) }}
+                        {% if form.vars.value.photo is not null %}
+                            <img src="{{ asset(form.vars.value.photo.webPath) }}" class="img-responsive">
+                        {% endif %}
+                        {{ form_widget(form.photo, {'attr': {'class': 'form-control'}})}}
+                        {{ form_errors(form.photo) }}
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-primary" type="submit">Je valide</button>
+                    </div>
+                    {{ form_end(form) }}
+                </fieldset>
+            </div>
+        </div>
+    </div>
+{% endblock user_content %}

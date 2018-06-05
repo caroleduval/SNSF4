@@ -2,31 +2,31 @@
 
 namespace App\UI\Form\Type;
 
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use App\Domain\Model\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->remove('current_password')
-            ->remove('username')
-            ->add('name', TextType::class)
+        $builder
             ->add('firstName', TextType::class)
+            ->add('name', TextType::class)
+            ->add('email', EmailType::class)
             ->add('photo', PhotoType::class, array(
                 'required' => false,
             ))
         ;
     }
 
-    public function getParent()
+    public function configureOptions(OptionsResolver $resolver)
     {
-        return 'FOS\UserBundle\Form\Type\ProfileFormType';
-    }
-
-    public function getBlockPrefix()
-    {
-        return 'fos_user_profile_edit';
+        $resolver->setDefaults(array(
+            'data_class' => User::class,
+        ));
     }
 }
