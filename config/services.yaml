@@ -2,6 +2,7 @@ parameters:
     locale: 'fr'
     fixtures_directory: '%kernel.project_dir%/src/Command/Fixtures'
     photos_directory: '%kernel.project_dir%/public/upload/photos'
+    app.notifications.email_sender: kdu-prog@orange.fr
 
 services:
     # default configuration for services in *this* file
@@ -64,3 +65,6 @@ services:
     App\Service\CollectionUpdater:
         arguments:
             - '@doctrine.orm.entity_manager'
+
+    App\EventSubscriber\RegistrationNotifySubscriber:
+        $sender: '%app.notifications.email_sender%'

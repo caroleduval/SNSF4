@@ -30,6 +30,6 @@ final class ViewProfileResponder
      */
     public function __invoke($data=null)
     {
-        return new Response($this->twig->render('Security/view.html.twig', $data));
+        return new Response($this->twig->render('Security/viewProfile.html.twig', $data));
     }
 }

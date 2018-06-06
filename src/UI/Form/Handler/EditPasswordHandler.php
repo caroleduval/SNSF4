@@ -3,21 +3,19 @@
 namespace App\UI\Form\Handler;
 
 use App\Domain\Repository\UserManager;
-use App\Events;
+use App\Domain\Model\User;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\EventDispatcher\GenericEvent;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
-class RegistrationHandler
+class EditPasswordHandler
 {
     /**
      * @var UserManager
      */
-    private $userManager;
+    private $manager;
 
     /**
      * @var UserPasswordEncoderInterface
@@ -35,53 +33,36 @@ class RegistrationHandler
     private $tokenStorage;
 
     /**
-     * @var EventDispatcherInterface
-     */
-    private $dispatcher;
-
-    /**
-     * RegistrationHandler constructor.
-     * @param UserManager $userManager
+     * EditPasswordHandler constructor.
+     * @param UserManager $manager
      * @param UserPasswordEncoderInterface $encoder
      * @param SessionInterface $session
-     * @param EventDispatcherInterface $dispatcher
      * @param TokenStorageInterface $tokenStorage
      */
     public function __construct(
-        UserManager $userManager,
+        UserManager $manager,
         UserPasswordEncoderInterface $encoder,
         SessionInterface $session,
-        EventDispatcherInterface $dispatcher,
         TokenStorageInterface $tokenStorage)
     {
-        $this->userManager=$userManager;
+        $this->manager=$manager;
         $this->encoder=$encoder;
         $this->session=$session;
-        $this->dispatcher=$dispatcher;
         $this->tokenStorage=$tokenStorage;
     }
 
-    /**
-     * @param FormInterface $form
-     * @return bool
-     */
-    public function handle(FormInterface $form): bool
+    public function handle(FormInterface $form, User $user): bool
     {
         if ($form->isSubmitted() && $form->isValid()){
-            $user=$form->getData();
-            $password = $this->encoder->encodePassword($user, $user->getPassword());
+            $password = $this->encoder->encodePassword($user, $form->getData()->getPassword());
             $user->setPassword($password);
 
-            $user->setRoles(['ROLE_USER']);
-
-            $this->userManager->addUser($user);
-
-            $event = new GenericEvent($user);
-            $this->dispatcher->dispatch(Events::USER_REGISTERED, $event);
+            $this->manager->editUser();
 
             $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
             $this->tokenStorage->setToken($token);
             $this->session->set('_security_main', serialize($token));
+
             return true;
         } else {
             return false;

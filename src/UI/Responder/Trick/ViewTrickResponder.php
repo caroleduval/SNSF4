@@ -30,6 +30,6 @@ final class ViewTrickResponder
      */
     public function __invoke(array $data)
     {
-        return new Response($this->twig->render('Trick/view.html.twig',$data));
+        return new Response($this->twig->render('Trick/viewProfile.html.twig',$data));
     }
 }
