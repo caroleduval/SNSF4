@@ -8,12 +8,13 @@
         <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
             <div class="well">
                 <legend>Se connecter</legend>
-                {% if error %}
-                    <div class="alert alert-danger">
-                        {{ error.messageKey }}
+                {% for flash_message in app.session.flashBag.get("error") %}
+                    <div class="main">
+                        <div class="alert alert-danger">
+                            {{ flash_message }}
+                        </div>
                     </div>
-                {% endif %}
-
+                {% endfor %}
                 <form action="{{ path('login_check') }}" method="post">
                     {#First Name#}
                     <div class="form-group">
@@ -37,13 +38,11 @@
                     </div>
                     {#Mot de passe oublié#}
                     <div class="text-center" style="margin-bottom: 10px">
-                        {#<a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>#}
-                        <a href="">Mot de passe oublié ?</a>
+                        <a href="{{ path('reset_request') }}">Mot de passe oublié ?</a>
                     </div>
                     {#S'inscrire#}
                     <div class="text-center">
-                        {#<a href="{{ path('fos_user_registration_register') }}">Je m'inscris maintenant</a>#}
-                        <a href="">Je m'inscris maintenant</a>
+                        <a href="{{ path('user_registration') }}">Je m'inscris maintenant</a>
                     </div>
                 </form>
             </div>

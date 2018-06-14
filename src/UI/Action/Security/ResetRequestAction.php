@@ -2,11 +2,11 @@
 
 namespace App\UI\Action\Security;
 
-use App\UI\Form\Model\ChangePassword;
 use App\Domain\Repository\UserManager;
-use App\UI\Form\Type\EditPasswordType;
-use App\UI\Form\Handler\EditPasswordHandler;
-use App\UI\Responder\Security\EditPasswordResponder;
+use App\UI\Form\Model\Identifier;
+use App\UI\Form\Type\ResetRequestType;
+use App\UI\Form\Handler\ResetRequestHandler;
+use App\UI\Responder\Security\ResetRequestResponder;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,9 +14,9 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/change_password/{username}", name="edit_password", methods={"GET","POST"})
+ * @Route("/reset_request", name="reset_request", methods={"GET","POST"})
  */
-class EditPasswordAction
+class ResetRequestAction
 {
     /**
      * @var FormFactoryInterface
@@ -24,7 +24,7 @@ class EditPasswordAction
     private $formFactory;
 
     /**
-     * @var EditPasswordHandler
+     * @var ResetRequestHandler
      */
     private $handler;
 
@@ -41,13 +41,13 @@ class EditPasswordAction
     /**
      * EditProfileAction constructor.
      * @param FormFactoryInterface $formFactory
-     * @param EditPasswordHandler $handler
+     * @param ResetRequestHandler $handler
      * @param SessionInterface $session
      * @param UserManager $manager
      */
     public function __construct(
         FormFactoryInterface $formFactory,
-        EditPasswordHandler $handler,
+        ResetRequestHandler $handler,
         SessionInterface $session,
         UserManager $manager)
     {
@@ -59,7 +59,7 @@ class EditPasswordAction
 
     /**
      * @param Request $request
-     * @param EditPasswordResponder $responder
+     * @param ResetRequestResponder $responder
      * @return Response
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
@@ -67,22 +67,20 @@ class EditPasswordAction
      */
     public function __invoke(
         Request $request,
-        EditPasswordResponder $responder): Response
+        ResetRequestResponder $responder
+    ): Response
     {
-        $newChangePassword = new ChangePassword();
+                $identifier = new Identifier();
 
-        $user=$this->manager
-            ->findUserbyUsername($request->attributes->get('username'));
+                $form = $this->formFactory
+                    ->create(ResetRequestType::class, $identifier)
+                    ->handleRequest($request);
 
-        $form = $this->formFactory
-            ->create(EditPasswordType::class, $newChangePassword)
-            ->handleRequest($request);
+                if ($this->handler->handle($form)) {
+                    $this->session->getFlashBag()->add("info", "Un mail de réinitialisation vous a été adressé.");
+                    return $responder(true, $form);
+                }
 
-        if ($this->handler->handle($form, $user)) {
-            $this->session->getFlashBag()->add("info", "Votre mot de passe a été modifié.");
-            return $responder(true, $form, $user);
-        }
-
-        return $responder(false, $form);
+                return $responder(false, $form);
     }
 }

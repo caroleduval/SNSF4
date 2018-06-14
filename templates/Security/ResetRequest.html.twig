@@ -1,0 +1,25 @@
+{% extends "Security/layout.html.twig" %}
+
+{% block user_content %}
+    <div class="container">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
+            <div class="well">
+                <legend>Mot de passe oublié</legend>
+                {{ form_start(form) }}
+                <fieldset>
+                    {#Email#}
+                    <div class="form-group">
+                        {{ form_label(form.email, 'E-mail', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Adresse e-mail'}})}}
+                        {{ form_errors(form.email) }}
+                    </div>
+                    {#Validation#}
+                    <div class="form-group text-center">
+                        <input class="btn btn-primary" type="submit" id="_submit" name="_submit" value="{{ 'Changer mon mot de passe' }}" />
+                    </div>
+                    {{ form_end(form) }}
+                </fieldset>
+            </div>
+        </div>
+    </div>
+{% endblock user_content %}

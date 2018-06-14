@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Form\FormInterface;
 
-final class RegistrationResponder
+final class ResetRequestResponder
 {
     /**
      * @var Environment
@@ -35,7 +35,6 @@ final class RegistrationResponder
     /**
      * @param bool $redirect
      * @param FormInterface|null $form
-     * @param User|null $trick
      * @return RedirectResponse|Response
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
@@ -45,7 +44,7 @@ final class RegistrationResponder
     {
         $response = $redirect
             ? new RedirectResponse($this->router->generate('homepage'))
-            : new Response($this->twig->render('Security/registration.html.twig',[
+            : new Response($this->twig->render('Security/ResetRequest.html.twig',[
                 'form' => $form->createView()
             ]));
         return $response;

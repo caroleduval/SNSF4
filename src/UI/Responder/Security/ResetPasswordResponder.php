@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Form\FormInterface;
 
-final class RegistrationResponder
+class ResetPasswordResponder
 {
     /**
      * @var Environment
@@ -22,7 +22,7 @@ final class RegistrationResponder
     private $router;
 
     /**
-     * TrickViewResponder constructor.
+     * EditProfileResponder constructor.
      * @param Environment $twig
      * @param UrlGeneratorInterface $router
      */
@@ -35,17 +35,17 @@ final class RegistrationResponder
     /**
      * @param bool $redirect
      * @param FormInterface|null $form
-     * @param User|null $trick
+     * @param User|null $user
      * @return RedirectResponse|Response
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function __invoke($redirect=false, FormInterface $form = null)
+    public function __invoke($redirect=false, FormInterface $form = null, User $user = null)
     {
         $response = $redirect
             ? new RedirectResponse($this->router->generate('homepage'))
-            : new Response($this->twig->render('Security/registration.html.twig',[
+            : new Response($this->twig->render('Security/resetPassword.html.twig',[
                 'form' => $form->createView()
             ]));
         return $response;

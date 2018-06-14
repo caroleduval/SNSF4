@@ -68,3 +68,6 @@ services:
 
     App\EventSubscriber\RegistrationNotifySubscriber:
         $sender: '%app.notifications.email_sender%'
+
+    App\EventSubscriber\ResetPasswordSubscriber:
+        $sender: '%app.notifications.email_sender%'

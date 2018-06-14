@@ -321,18 +321,49 @@ class User implements UserInterface, \Serializable
     }
 
     /**
+     * @return string
+     */
+    public function getResetToken(): string
+    {
+        return $this->resetToken;
+    }
+
+    /**
+     * @param string $resetToken
+     */
+    public function setResetToken(string $resetToken): void
+    {
+        $this->resetToken = $resetToken;
+    }
+
+    /**
+     * @return int
+     */
+    public function getResetTokenExpiresAt(): int
+    {
+        return $this->resetTokenExpiresAt;
+    }
+
+    /**
+     * @param int $resetTokenExpiresAt
+     */
+    public function setResetTokenExpiresAt(int $resetTokenExpiresAt): void
+    {
+        $this->resetTokenExpiresAt = $resetTokenExpiresAt;
+    }
+    /**
      * Generates new reset token which expires in specified period of time.
      *
      * @param \DateInterval $interval
      *
-     * @return string Generated token.
+     * @return User.
      */
-    public function generateResetToken(\DateInterval $interval): string
+    public function generateResetToken(\DateInterval $interval): User
     {
         $now = new \DateTime();
         $this->resetToken          = Uuid::uuid4()->getHex();
         $this->resetTokenExpiresAt = $now->add($interval)->getTimestamp();
-        return $this->resetToken;
+        return $this;
     }
 
     /**
