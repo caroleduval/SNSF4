@@ -60,14 +60,12 @@
 
                         </div>
                     </div>
-                    {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <div class="read_more text-center">
-                            {#<a class="btn" href="">Modifier</a>#}
                             <a class="btn" href="{{ path('trick_edit', {'slug': trick.slug} ) }}">Modifier</a>
                             <a class="btn" href="{{ path('trick_delete', {'slug': trick.slug} ) }}" onclick="return confirm('Êtes-vous sur(e) de vouloir supprimer ce trick ?')">Supprimer</a>
-                            {#<a class="btn" href="" onclick="return confirm('Êtes-vous sur(e) de vouloir supprimer ce trick ?')">Supprimer</a>#}
                         </div>
-                    {#{% endif %}#}
+                    {% endif %}
                     <div class="clear"></div>
                 </div>
             </div>

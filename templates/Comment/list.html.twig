@@ -1,6 +1,9 @@
-{#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
-    {#{{ render(controller('App\\Action\\AddCommentAction', {'request': app.request, 'slug': trick.slug})) }}#}
-{#{% endif %}#}
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    là, y'aura le formulaire de commentaire
+    {#{{ include('comment/add.html.twig', { 'slug': trick.slug }) }}#}
+    {{ render(controller( 'App\\UI\\Action\\Comment\\AddCommentAction', {'slug': trick.slug } )) }}
+{% endif %}
+
 {% for comment in listComments %}
     <div class="row comment">
         <div class="avatar col-xs-2 col-sm-1">

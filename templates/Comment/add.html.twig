@@ -1,4 +1,4 @@
-{{ form_start(form, { action : path('comments_add', {'slug': comment.trick.slug}) }) }}
+{{ form_start(form, { action : path('comment_add', {'slug': trick.slug}) }) }}
 <div class="row comment">
     <div class="avatar col-xs-2 col-sm-1">
         {% if app.user.photo is not null %}

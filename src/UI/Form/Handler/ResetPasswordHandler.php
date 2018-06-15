@@ -54,11 +54,8 @@ class ResetPasswordHandler
     public function handle(FormInterface $form, User $user): bool
     {
         if ($form->isSubmitted() && $form->isValid()){
-            $password=$form->getData()->getPassword();
-//            dump($password);die;
+            $password = $this->encoder->encodePassword($user,$form->getData()->getPassword());
 
-            $password = $this->encoder->encodePassword($user,$password);
-//            dump($password);die;
             $user->setPassword($password);
             $user->clearResetToken();
 

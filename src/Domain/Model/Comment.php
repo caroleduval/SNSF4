@@ -141,7 +141,7 @@ class Comment
     /**
      * Set trick
      *
-     * @param integer $trick
+     * @param Trick $trick
      *
      * @return Comment
      */

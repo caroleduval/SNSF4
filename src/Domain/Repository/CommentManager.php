@@ -40,7 +40,7 @@ class CommentManager extends ServiceEntityRepository
             ->addSelect('u')
             ->leftJoin('u.photo', 'p')
             ->addSelect('p')
-            ->orderBy('c.dateCrea', 'ASC')
+            ->orderBy('c.dateCrea', 'DESC')
             ->where('c.trick=:trick_id')
             ->setParameter('trick_id',$trick->getId())
             ->getQuery()
